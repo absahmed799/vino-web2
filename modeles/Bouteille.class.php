@@ -200,7 +200,7 @@ class Bouteille extends Modele {
 
         $res = $this->_db->query($requete);
         
-		return $res;
+		return true;
 	}
 }
 
