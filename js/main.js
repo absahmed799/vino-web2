@@ -8,14 +8,20 @@
  *
  */
 
+// **********************************************************
+// NE EFFACER PAS BaseURL, UTILISE COMMENT OU UNCOMMENT !!!
+
 //const BaseURL = "http://localhost/vino-git/";
 const BaseURL = "http://127.0.0.1:8888/vino_etu/";
 //const BaseURL = document.baseURI;
+
+// **********************************************************
+
 console.log(BaseURL);
 window.addEventListener("load", function () {
   console.log("load");
   document.querySelectorAll(".btnBoire").forEach(function (element) {
-    console.log(element);
+    //console.log(element);
     element.addEventListener("click", function (evt) {
       let id = evt.target.parentElement.dataset.id;
       let requete = new Request(
@@ -207,4 +213,42 @@ window.addEventListener("load", function () {
       });
     }
   }
+});
+
+
+/**
+ * Mettre a jour la quantité de bouteille dans le cellier
+ */
+
+function ajouterBouteilleQt(btn) {
+  let bouteille = btn.closest('.bouteille');
+  let quantiteElem = bouteille.querySelector('.quantite-valeur');
+  let quantite = parseInt(quantiteElem.innerHTML);
+  quantite++;
+  quantiteElem.innerHTML = quantite;
+}
+
+function boireBouteilleQt(btn) {
+  let bouteille = btn.closest('.bouteille');
+  let quantiteElem = bouteille.querySelector('.quantite-valeur');
+  let quantite = parseInt(quantiteElem.innerHTML);
+  if (quantite > 0) {
+      quantite--;
+  }
+  quantiteElem.innerHTML = quantite;
+}
+
+let btnAjouterList = document.querySelectorAll('.btnAjouter');
+let btnBoireList = document.querySelectorAll('.btnBoire');
+
+btnAjouterList.forEach(function(btnAjouter) {
+  btnAjouter.addEventListener('click', function() {
+      ajouterBouteilleQt(btnAjouter);
+  });
+});
+
+btnBoireList.forEach(function(btnBoire) {
+  btnBoire.addEventListener('click', function() {
+      boireBouteilleQt(btnBoire);
+  });
 });
