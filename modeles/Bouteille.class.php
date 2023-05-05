@@ -184,27 +184,34 @@ class Bouteille extends Modele {
 	}
 	public function modifierBouteilleCellier($data)
 	{
-		//TODO : Valider les données.
-		var_dump($data);	
-		//id_bouteille = '".$data->id."',
+		var_dump($data);
+	
+		// la requête SQL
 		$requete = "UPDATE vino__cellier
-		SET
-			
-			date_achat = '".$data->date_achat."',
-			garde_jusqua = '".$data->garde_jusqua."',
-			notes = '".$data->notes."',
-			prix = '".$data->prix."',
-			quantite = '".$data->quantite."',
-			millesime = '".$data->millesime."'
-		WHERE id = '".$data->id."';";
+					SET date_achat = ?,
+						garde_jusqua = ?,
+						notes = ?,
+						prix = ?,
+						quantite = ?,
+						millesime = ?
+					WHERE id = ?";
+	
+		// Préparer la requête 
+		$stmt = $this->_db->prepare($requete);
 
-        $res = $this->_db->query($requete);
-        
-		return true;
+	
+		// Exécuter la requête
+		$stmt->bind_param("sssdiii", $data->date_achat,
+									$data->garde_jusqua, 
+									$data->notes, 
+									$data->prix, 
+									$data->quantite, 
+									$data->millesime, 
+									$data->id);
+		$res = $stmt->execute();
+	
+		// Vérifier si la requête a réussi
+	
+		return $res;
 	}
 }
-
-
-
-
-?>
