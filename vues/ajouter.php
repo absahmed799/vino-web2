@@ -1,20 +1,22 @@
 <div class="ajouter">
 
     <div class="nouvelleBouteille" vertical layout>
-        Recherche : <input type="text" name="nom_bouteille">
+        <strong>Recherche : </strong><input type="text" name="nom_bouteille">
         <ul class="listeAutoComplete">
 
         </ul>
-            <div >
-                <p>Nom : <span data-id="" class="nom_bouteille"></span></p>
-                <p>Millesime : <input name="millesime"></p>
-                <p>Quantite : <input name="quantite" value="1"></p>
-                <p>Date achat : <input name="date_achat"></p>
-                <p>Prix : <input name="prix"></p>
-                <p>Garde : <input name="garde_jusqua"></p>
-                <p>Notes <input name="notes"></p>
-            </div>
-            <button name="ajouterBouteilleCellier">Ajouter la bouteille (champs tous obligatoires)</button>
+        <div>
+            <p>Nom : <!-- <input data-id="" class="nom_bouteille" type="text" name="nom_bouteille" placeholder="Nom de la bouteille" disabled> -->
+                 <strong><span data-id="" class="nom_bouteille"></span></strong>
+            </p>
+            <p>Millesime (année): <input type="number" name="millesime" placeholder="1900"></p>
+            <p>Quantite : <input type="number" min="1" name="quantite" value="1"></p>
+            <p>Date achat : <input type="date" name="date_achat"></p>
+            <p>Prix : <input type="number" min="0" step="0.01" name="prix" placeholder="0.00"> $</p>
+            <p>Garde (année): <input type="number" name="garde_jusqua" placeholder="2025"></p>
+            <p>Notes :<input type="text" placeholder="Commentaire..." name="notes"></p>
         </div>
+        <button name="ajouterBouteilleCellier">Ajouter la bouteille (champs tous obligatoires)</button>
     </div>
+</div>
 </div>
