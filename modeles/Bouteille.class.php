@@ -198,14 +198,9 @@ class Bouteille extends Modele {
 	
 		// Préparer la requête 
 		$stmt = $this->_db->prepare($requete);
+
 	
-		// Vérifier si la requête a réussi
-		if (!$stmt) {
-			error_log("Erreur de préparation de la requête: " . $this->_db->errno . " " . $this->_db->error);
-			return false;
-		}
-	
-		// Exécuter la requête avec les paramètres
+		// Exécuter la requête
 		$stmt->bind_param("sssdiii", $data->date_achat,
 									$data->garde_jusqua, 
 									$data->notes, 
