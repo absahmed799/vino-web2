@@ -20,15 +20,18 @@
 		<script src="./js/plugins.js"></script>
 		<script src="./js/main.js"></script>
 	</head>
-	<body >
-		<header>
-			<h1>Un petit verre de vino ?</h1>
-			<nav>
-				<ul>
-					<li><a href="?requete=accueil">Mon cellier</a></li>
-					<li><a href="?requete=ajouterNouvelleBouteilleCellier">Ajouter une bouteille au cellier</a></li>
-				</ul>
-			</nav>
+	
+	<body style="height: 100%;">
+		<header class="header">
+            <a href="#" class="logo">
+                <img src="./images/vinos-blues-icone.svg" alt="logo.svg">  <span class="text_logo">Un petit verre de vino?</span>
+            </a>
+            <i class="bx bx-menu" id="menu-icon"></i>
+			<nav class="navbar">
+                <a href="?requete=accueil/">Mon cellier</a>
+                <a href="?requete=ajouterNouvelleBouteilleCellier">Ajouter une bouteille au cellier</a>
+                <a href="/updateSAQ.php">Importer les bouteilles</a>
+            </nav>
 		</header>
 		<main>
 			
