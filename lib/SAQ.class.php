@@ -46,29 +46,46 @@ class SAQ extends Modele {
 		//curl_setopt($s, CURLOPT_URL, "http://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?searchType=&orderBy=&categoryIdentifier=06&showOnly=product&langId=-2&beginIndex=".$debut."&tri=&metaData=YWRpX2YxOjA8TVRAU1A%2BYWRpX2Y5OjE%3D&pageSize=". $nombre ."&catalogId=50000&searchTerm=*&sensTri=&pageView=&facet=&categoryId=39919&storeId=20002");
 		//curl_setopt($s, CURLOPT_URL, "https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?categoryIdentifier=06&showOnly=product&langId=-2&beginIndex=" . $debut . "&pageSize=" . $nombre . "&catalogId=50000&searchTerm=*&categoryId=39919&storeId=20002");
 		//curl_setopt($s, CURLOPT_URL, $url);
+		//curl_setopt($s, CURLOPT_HEADER, 0);
 		//curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
         //curl_setopt($s, CURLOPT_CUSTOMREQUEST, 'GET');
         //curl_setopt($s, CURLOPT_NOBODY, false);
-		//curl_setopt($s, CURLOPT_FOLLOWLOCATION, 1);
-
+		//curl_setopt($s, CURLOPT_FOLLOWLOCATION, true);
+		//curl_setopt($s, CURLOPT_POST, false);
+		/*curl_setopt($s, CURLOPT_HTTPHEADER, array(
+			'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,* /*;q=0.8',
+			'Accept-Language: en-US,en;q=0.5',
+			'Accept-Encoding: gzip, deflate',
+			'Connection: keep-alive',
+			'Upgrade-Insecure-Requests: 1',
+		));*/
+		//curl_setopt($s, CURLOPT_FOLLOWLOCATION, true);
+		//var_dump($s);
         // Se prendre pour un navigateur pour berner le serveur de la saq...
-        curl_setopt_array($s,array(
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_USERAGENT=>'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
-            CURLOPT_ENCODING=>'gzip, deflate',
-            CURLOPT_HTTPHEADER=>array(
-                    'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                    'Accept-Language: en-US,en;q=0.5',
-                    'Accept-Encoding: gzip, deflate',
-                    'Connection: keep-alive',
-                    'Upgrade-Insecure-Requests: 1',
-            ),
-    ));
+		
+        curl_setopt_array($s, array(
+			CURLOPT_URL => $url,
+			//CURLOPT_CUSTOMREQUEST => 'GET', // Fixed syntax error
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_SSL_VERIFYHOST => false, // Added to disable SSL host verification
+			CURLOPT_SSL_VERIFYPEER => false, // Added to disable SSL
+			CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+			CURLOPT_POST => false, // Changed to false for a GET request
+			CURLOPT_ENCODING => 'gzip, deflate',
+			CURLOPT_HTTPHEADER => array(
+				'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,* /*;q=0.8',
+				'Accept-Language: en-US,en;q=0.5',
+				'Accept-Encoding: gzip, deflate',
+				'Connection: keep-alive',
+				'Upgrade-Insecure-Requests: 1',
+			),
+			CURLOPT_FOLLOWLOCATION => true, // Added option to follow redirects
+		));
 
 		self::$_webpage = curl_exec($s);
 		self::$_status = curl_getinfo($s, CURLINFO_HTTP_CODE);
-		curl_close($s);
+		echo self::$_status;
+		//curl_close($s);
 
 		$doc = new DOMDocument();
 		$doc -> recover = true;

@@ -136,6 +136,7 @@ window.addEventListener("load", function () {
     let btnAjouter = document.querySelector("[name='ajouterBouteilleCellier']");
     if (btnAjouter) {
       btnAjouter.addEventListener("click", function (evt) {
+       
         var param = {
           id_bouteille: bouteille.nom.dataset.id,
           date_achat: bouteille.date_achat.value,
@@ -151,6 +152,46 @@ window.addEventListener("load", function () {
         );
         fetch(requete)
           .then((response) => {
+            if (response.status === 200) {
+              return response.json();
+            } else {
+              throw new Error("Erreur");
+            }
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+    }
+
+
+
+    let btnModifer = document.querySelector("[name='modifierBouteilleCellier']");
+    if (btnModifer) {
+      btnModifer.addEventListener("click", function (evt) {
+        console.log('click modifier');
+         let id= document.querySelector("[name='id']");
+         console.log(id.value);
+        var param = {
+         id:id.value,
+          date_achat: bouteille.date_achat.value,
+          garde_jusqua: bouteille.garde_jusqua.value,
+          notes: bouteille.notes.value,
+          prix: bouteille.prix.value,
+          quantite: bouteille.quantite.value,
+          millesime: bouteille.millesime.value,
+        };
+        let requete = new Request(
+          BaseURL + "index.php?requete=modifierBouteilleCellier",
+          { method: "POST", body: JSON.stringify(param) }
+        );
+        console.log(requete);
+        fetch(requete)
+          .then((response) => {
+            console.log(response);
             if (response.status === 200) {
               return response.json();
             } else {

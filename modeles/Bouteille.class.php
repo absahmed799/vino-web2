@@ -168,6 +168,40 @@ class Bouteille extends Modele {
         
 		return $res;
 	}
+	public function getBouteilleParid($id)
+	{
+		$rows = Array();
+		$res = $this->_db->query('Select * from  vino__cellier where id = '.$id);
+		if($res->num_rows)
+		{
+			while($row = $res->fetch_assoc())
+			{
+				$rows[] = $row;
+			}
+		}
+		
+		return $rows;
+	}
+	public function modifierBouteilleCellier($data)
+	{
+		//TODO : Valider les données.
+		var_dump($data);	
+		//id_bouteille = '".$data->id."',
+		$requete = "UPDATE vino__cellier
+		SET
+			
+			date_achat = '".$data->date_achat."',
+			garde_jusqua = '".$data->garde_jusqua."',
+			notes = '".$data->notes."',
+			prix = '".$data->prix."',
+			quantite = '".$data->quantite."',
+			millesime = '".$data->millesime."'
+		WHERE id = '".$data->id."';";
+
+        $res = $this->_db->query($requete);
+        
+		return true;
+	}
 }
 
 
