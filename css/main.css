@@ -1,16 +1,191 @@
 /********
- * Votre CSS
+ * Bases  CSS
  ********/
 
 html, body {
 	height: 100%;
 	margin: 0;
 	background-color: #E5E5E5;
-	
-	font-family: 'Roboto', 'RobotoDraft', sans-serif;
-	font-size: 95%;
-	
+	overflow-x: hidden;
 }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	scroll-behavior: smooth;
+	font-family: 'Roboto', 'RobotoDraft', sans-serif;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 0.5rem 8rem;
+	display: flex;
+	align-items: center;
+	z-index: 100;
+	border-bottom: .1rem solid rgba(0, 0, 0, .2);
+	background-color: white;
+}
+
+.logo {
+	font-weight: 600;
+	cursor: default;
+}
+
+.logo img {
+	width: 10%;
+}
+
+.text_logo {
+	margin-left: 1rem;
+}
+
+#menu-icon {
+	display: none;
+	font-size: 3.6rem;
+	color: #222222;
+}
+
+.navbar {
+	width: 100%;
+	text-align: end;
+}
+
+.navbar a {
+	display: inline-block;
+	font-size: 1.2rem;
+	margin-left: 1.2rem;
+}
+
+section {
+	min-height: 100vh;
+	padding: 10rem 9% 2rem;
+}
+
+.bouteille-cellier {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 2rem;
+}
+
+.bouteille {
+	flex: 1 1 25rem;
+	padding: 1rem 1rem 1rem;
+	border-radius: 0.8rem;
+	background-color: white;
+}
+
+.bouteille .head-card {
+	text-align: center;
+	margin-bottom: 25.5px;
+}
+
+.bouteille .body-card {
+	display: flex;
+}
+
+.bouteille .body-card p {
+	margin-bottom: 1.1rem;
+	font-weight: bold;
+}
+
+.bouteille .footer-card {
+	text-align: center;
+}
+
+.btnAjouter {
+	margin-right: 1.2rem;
+	margin-left: 1.2rem;
+	background-color: green;
+	color: white;
+}
+
+.btn {
+	display: inline-block;
+	padding: 1rem 1.5rem;
+	border-radius: 4rem;
+	font-size: 1rem;
+	letter-spacing: 0.1rem;
+	font-weight: 600;
+}
+
+section.modifier {
+	display: block;
+	justify-content: center;
+	align-items: center;
+}
+
+section.modifier .nouvelleBouteille {
+	padding: 1rem 1rem 1rem;
+	background-color: white;
+	border-radius: 0.8rem;
+	margin: 0 25rem;
+}
+
+section.modifier h1 {
+	text-align: center;
+}
+
+/* Form */
+form {
+	max-width: 70rem;
+	text-align: center;
+	margin: 1rem auto;
+}
+
+form .input-box {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	text-align: left;
+}
+
+form .input-box input {
+	width: 100%;
+	padding: 1rem;
+	font-size: 1rem;
+	color: black;
+	background: #e2e2e2;
+	border-radius: .4rem;
+	margin: .7rem 0;
+}
+
+.obligatoire {
+	font-weight: bold;
+	color: red;
+}
+
+.obligatoire_champ {
+	margin-top: 1.5rem;
+	text-align: right;
+	font-weight: bold;
+}
+
+.btnUpdate {
+	margin-top: 2rem;
+	color: white;
+	background-color: green;
+}
+
+.listeAutoComplete {
+	text-align: left;
+	margin-left: 2rem;
+	margin-bottom: 2rem;
+}
+
+.name_bottle {
+	text-align: left;
+	margin-top: 1rem;
+}
+
 .liste {
 	display: block;
 	border-top: 1px solid #ccc;
@@ -37,7 +212,7 @@ html, body {
 .liste > div:hover {
 	color:#000000;
 	transition: color 200ms ease-in-out;
-	
+
 }
 
 @media all and (max-width:640px)
@@ -46,21 +221,110 @@ html, body {
 	{
 		display:none;
 	}
-	
+
 }
 
 footer
 {
-	position: fixed;;
+	position: relative;
 	bottom:0px;
 	width: 100%;
-	padding-top:3px;
 	text-align: center;
 	background-color:#FFFFFF;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 2rem 9%;
 }
+
 footer p
 {
 	display:inline;
 	padding-right:50px;
-	font-size : 10px;
+	/*font-size : 10px;*/
+}
+
+/* Media Queries*/
+@media (max-width: 1200px) {
+	#menu-icon {
+		display: block;
+	}
+
+	.navbar {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		padding: 1rem 3%;
+		background: white;
+		border-top: .1rem solid rgba(0, 0, 0, .2);
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .2);
+		display: none;
+	}
+
+	.navbar.active {
+		display: block;
+	}
+
+	.navbar a {
+		display: block;
+		font-size: 1.1rem;
+		margin: 1.5rem;
+	}
+
+	section {
+		padding: 7rem 3% 2rem;
+	}
+
+	section.modifier .nouvelleBouteille {
+		margin: 0 10rem;
+	}
+}
+
+@media (max-width: 991px) {
+	.header {
+		padding: 0.5rem 2rem;
+	}
+}
+
+@media (max-width: 671px) {
+	#menu-icon {
+		font-size: 2.5rem;
+	}
+
+	.logo img {
+		width: 15%;
+	}
+
+	section {
+		padding: 7rem 3% 2rem;
+	}
+
+	section.cellier {
+		flex-direction: column;
+		font-size: 0.9rem;
+	}
+
+	.btn {
+		padding: 0.5rem 0.9rem;
+		font-size: 0.8rem;
+		border-radius: 2rem;
+	}
+
+	section.modifier h1 {
+		font-size: 1.7rem;
+	}
+
+	section.modifier .nouvelleBouteille {
+		margin: 0;
+	}
+
+	form .input-box {
+		display: block;
+	}
+
+	.btnUpdate {
+		font-size: 1.4rem;
+	}
 }
