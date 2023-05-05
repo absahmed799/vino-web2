@@ -117,20 +117,26 @@ section {
 	font-weight: 600;
 }
 
-section.modifier {
+section.modifier,
+section.ajouter
+{
 	display: block;
 	justify-content: center;
 	align-items: center;
 }
 
-section.modifier .nouvelleBouteille {
+section.modifier .nouvelleBouteille,
+section.ajouter .nouvelleBouteille
+{
 	padding: 1rem 1rem 1rem;
 	background-color: white;
 	border-radius: 0.8rem;
 	margin: 0 25rem;
 }
 
-section.modifier h1 {
+section.modifier h1,
+section.ajouter h1
+{
 	text-align: center;
 }
 
@@ -212,7 +218,7 @@ form .input-box input {
 .liste > div:hover {
 	color:#000000;
 	transition: color 200ms ease-in-out;
-
+	
 }
 
 @media all and (max-width:640px)
@@ -221,7 +227,7 @@ form .input-box input {
 	{
 		display:none;
 	}
-
+	
 }
 
 footer
@@ -277,7 +283,9 @@ footer p
 		padding: 7rem 3% 2rem;
 	}
 
-	section.modifier .nouvelleBouteille {
+	section.modifier .nouvelleBouteille,
+	section.ajouter  .nouvelleBouteille
+	{
 		margin: 0 10rem;
 	}
 }
@@ -312,11 +320,15 @@ footer p
 		border-radius: 2rem;
 	}
 
-	section.modifier h1 {
+	section.modifier h1,
+	section.ajouter h1
+	{
 		font-size: 1.7rem;
 	}
 
-	section.modifier .nouvelleBouteille {
+	section.modifier .nouvelleBouteille,
+	section.ajouter .nouvelleBouteille
+	{
 		margin: 0;
 	}
 
@@ -328,3 +340,5 @@ footer p
 		font-size: 1.4rem;
 	}
 }
+
+
