@@ -1,32 +1,44 @@
-<div class="cellier">
-<?php
-foreach ($data as $cle => $bouteille) {
- 
-    ?>
-    <div class="bouteille" data-quantite="">
-        <div class="img">
-            
-            <img src="<?php echo $bouteille['image'] ?>">
-        </div>
-        <div class="description">
-            <p class="nom">Nom : <?php echo $bouteille['nom'] ?></p>
-            <p class="quantite">Quantité : <?php echo $bouteille['quantite'] ?>/p>
-            <p class="pays">Pays : <?php echo $bouteille['pays'] ?></p>
-            <p class="type">Type : <?php echo $bouteille['type'] ?></p>
-            <p class="millesime">Millesime : <?php echo $bouteille['millesime'] ?></p>
-            <p><a href="<?php echo $bouteille['url_saq'] ?>">Voir SAQ</a></p>
-        </div>
-        <div class="options" data-id="<?php echo $bouteille['id_bouteille_cellier'] ?>">
-        <a href="?requete=modifierBouteilleCellier&id=<?php echo$bouteille['id_bouteille_cellier']?>&nom=<?php echo $bouteille['nom'] ?>">Modifier</a>
-        <button class='btnBoire'>Boire</button><button class='btnAjouter'>Ajouter</button><
-        </div>
-    </div>
+<section class="cellier" id="cellier">
+    <div class="bouteille-cellier">
     <?php
+    foreach ($data as $cle => $bouteille) {
+    
+        ?>
+        <div class="bouteille" data-quantite="">
+            <div class="head-card">
+                <h2 class="nom">
+                    <?php echo $bouteille['nom'] ?>
+                </h2>
+            </div>
+            <div class="body-card">
+                <div class="img">
+                    <img src="<?php echo $bouteille['image'] ?>" alt="">
+                </div>
+                <div>
+                    <div class="description">
+                        <p class="quantite">Quantité : <?php echo $bouteille['quantite'] ?></p>
+                        <p class="pays">Pays : <?php echo $bouteille['pays'] ?></p>
+                        <p class="type">Type : <?php echo $bouteille['type'] ?></p>
+                        <p class="millesime">Millesime : <?php echo $bouteille['millesime'] ?></p>
+                        <p><a href="<?php echo $bouteille['url_saq'] ?>">Voir SAQ</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-card">
+                <div class="options" data-id="<?php echo $bouteille['id_bouteille_cellier'] ?>">
+                    <a class="btn btn-modifier" href="?requete=modifierBouteilleCellier&id=<?php echo $bouteille['id_bouteille_cellier'] ?>">Modifier</a>
+                    <button class='btn btnAjouter'>Ajouter</button>
+                    <button class='btn btnBoire'>Boire</button>
+                </div>
+            </div>
+        </div>
+<?php
 
 
 }
 
-?>	
-</div>
+?>
+    </div>
 
+</section>
 
