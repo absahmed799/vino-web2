@@ -1,6 +1,6 @@
 
 		</main>
-		<footer>
+		<footer class="footer">
 			<p>
 				<a href="http://www.cmaisonneuve.qc.ca/"></a>
 			</p>
