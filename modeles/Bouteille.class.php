@@ -127,7 +127,6 @@ class Bouteille extends Modele
 		// Préparer la requête
 		$stmt = $this->_db->mysqli_prepare($requete);
 
-		// Lier les paramètres
 		$stmt->mysqli_stmt_bind_param(
 			"isssdii",
 			$data->id_bouteille,
