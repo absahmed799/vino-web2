@@ -1,21 +1,42 @@
-<div class="ajouter">
+<section class="modifier">
+
+    <h1><span><strong><?php echo $bouteille['nom'] ?></strong></span></h1>
 
     <div class="nouvelleBouteille" vertical layout>
-        Recherche : <input type="text" name="nom_bouteille">
-        <ul class="listeAutoComplete">
+        
+        <form action="?requete=miseAjourBouteilleCellier&id=<?php echo $data['id'] ?>" method="POST">
+            <div class="input-box">
+                <label> Millesime <span class="obligatoire">*</span> :
+                    <input required type="number" name="millesime" value="<?php echo $data['millesime'] ?>">
+                </label>
 
-        </ul>
-            <div >
-                <p>Nom : <span data-id="" class="nom_bouteille"><?php echo $nom_bouteille ?></span></p>
-                <p>Millesime : <input name="millesime" value="<?php echo  $bouteilleInfo[0]['millesime']  ?>"></p>
-                <p>Quantite : <input name="quantite" value="<?php  echo $bouteilleInfo[0]['quantite']  ?>"></p>
-                <p>Date achat : <input name="date_achat" value="<?php  echo $bouteilleInfo[0]['date_achat']  ?>"></p>
-                <p>Prix : <input name="prix" value="<?php  echo $bouteilleInfo[0]['prix']  ?>"></p>
-                <p>Garde : <input name="garde_jusqua" value="<?php echo  $bouteilleInfo[0]['garde_jusqua']  ?>"></p>
-                <p>Notes <input name="notes" value="<?php echo  $bouteilleInfo[0]['notes']  ?>"></p>
-                <input type="hidden" name="id" value="<?php echo  $bouteilleInfo[0]['id']  ?>">
+                <label> Quantite <span class="obligatoire">*</span>  :
+                    <input required type="number" name="quantite" step="0"  value="<?php echo $data['quantite'] ?>">
+                </label>
             </div>
-            <button name="modifierBouteilleCellier">Ajouter la bouteille (champs tous obligatoires)</button>
-        </div>
+
+            <div class="input-box">
+                <label> Date achat <span class="obligatoire">*</span> :
+                    <input required type="date" name="date_achat" value="<?php echo $data['date_achat'] ?>">
+                </label>
+
+                <label> Prix <span class="obligatoire">*</span> :
+                    <input required type="number" step="0.01" name="prix" value="<?php echo $data['prix'] ?>">
+                </label>
+            </div>
+
+            <div class="input-box">
+                <label> Garde <span class="obligatoire">*</span> :
+                    <input required type="text" name="garde_jusqua" value="<?php echo $data['garde_jusqua'] ?>">
+                </label>
+
+                <label> Notes <span class="obligatoire">*</span> :
+                    <input required type="text" name="notes" value="<?php echo $data['notes'] ?>">
+                </label>
+            </div>
+
+            <button type="submit" name="modifierBouteilleCellier" class="btn btnUpdate">Enregistrer</button>
+            <p class="obligatoire_champ"><span class="obligatoire">*</span> Sont obligatoires</p>
+        </form>
     </div>
-</div>
+</section>
