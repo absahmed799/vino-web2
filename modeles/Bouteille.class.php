@@ -67,8 +67,6 @@ class Bouteille extends Modele
 			//$this->_db->error;
 		}
 
-
-
 		return $rows;
 	}
 
@@ -87,6 +85,7 @@ class Bouteille extends Modele
 	{
 
 		$rows = array();
+		//var_dump($rows);
 		$nom = $this->_db->real_escape_string($nom);
 		$nom = preg_replace("/\*/", "%", $nom);
 
@@ -104,7 +103,6 @@ class Bouteille extends Modele
 			throw new Exception("Erreur de requête sur la base de données", 1);
 		}
 
-
 		//var_dump($rows);
 		return $rows;
 	}
@@ -120,26 +118,18 @@ class Bouteille extends Modele
 
 	public function ajouterBouteilleCellier($data)
 	{
-		var_dump($data);
+		//var_dump($data);
 		// Préparer la requête avec des paramètres
-		$requete = "INSERT INTO vino__cellier(id_bouteille,date_achat,garde_jusqua,notes,prix,quantite,millesime) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		$requete = "INSERT INTO vino__cellier(id_bouteille,date_achat,garde_jusqua,notes,prix,quantite,millesime) VALUES (".
+		"'".$data->id_bouteille."',".
+		"'".$data->date_achat."',".
+		"'".$data->garde_jusqua."',".
+		"'".$data->notes."',".
+		"'".$data->prix."',".
+		"'".$data->quantite."',".
+		"'".$data->millesime."')";
 
-		// Préparer la requête
-		$stmt = $this->_db->mysqli_prepare($requete);
-
-		$stmt->mysqli_stmt_bind_param(
-			"isssdii",
-			$data->id_bouteille,
-			$data->date_achat,
-			$data->garde_jusqua,
-			$data->notes,
-			$data->prix,
-			$data->quantite,
-			$data->millesime
-		);
-
-		// Exécuter la requête
-		$res = $stmt->execute();
+        $res = $this->_db->query($requete);
 
 		return $res;
 	}
@@ -178,7 +168,7 @@ class Bouteille extends Modele
 	}
 	public function modifierBouteilleCellier($data)
 	{
-		var_dump($data);
+		//var_dump($data);
 
 		// la requête SQL
 		$requete = "UPDATE vino__cellier
