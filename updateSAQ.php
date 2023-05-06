@@ -4,7 +4,9 @@
 	<head>
 		<meta charset="UTF-8" />	
 	</head>
-	<body>
+<body>
+
+
 <?php
 	require("dataconf.php");
 	require("config.php");
@@ -12,17 +14,18 @@
 	$nombreProduit = 96; //48 ou 96	
 	
 	$saq = new SAQ();
-	for($i=0; $i<4;$i++)	//permet d'importer séquentiellement plusieurs pages.
+	for($i=0; $i<5;$i++)	//permet d'importer séquentiellement plusieurs pages.
 	{
-		echo "<h2>page ". ($page+$i)."</h2>";
-		$nombre = $saq->getProduits($nombreProduit,$page+$i);
-		echo "importation : ". $nombre. "<br>";
+		//echo "<h2>page ". ($page+$i)."</h2>";
+		$nombre = $saq->getProduits($nombreProduit, $page + $i);
+		//echo "importation : ". $nombre. "<br>";
 	
 	}
 	
-	
-	
+	//header("Location: " . BASEURL);
+	//exit(302);
 
 ?>
+
 </body>
 </html>
