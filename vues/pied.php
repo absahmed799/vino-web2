@@ -1,13 +1,14 @@
 
 		</main>
-		<footer>
+		<footer class="footer">
 			<p>
-				<a href="http://www.cmaisonneuve.qc.ca/"></a>
+				Copyright 2023
 			</p>
 			<p>
-				Réalisé par <a href="mailto:jmartel@cmaisonneuve.qc.ca">Jonathan Martel</a>. Sous licence Creative Commons BY-NC 4.0 (2014)
+				Teams A-P-A-C-T Vinos Demos
 			</p>
 		</footer>
 	</body>
+	
 
 </html>
