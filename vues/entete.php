@@ -23,7 +23,6 @@
 	<script src="<?php echo BASEURL ?>/js/main.js"></script>
 	<script src="<?php echo BASEURL ?>/js/custom.js"></script>
 	<script src="<?php echo BASEURL ?>/js/boutons.js"></script>
-	<!--<script src="<?php echo BASEURL ?>/js/valideAjout.js"></script>-->
 </head>
 
 <body>

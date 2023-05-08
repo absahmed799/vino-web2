@@ -187,7 +187,7 @@ window.addEventListener("load", function () {
       btnModifer.addEventListener("click", function (evt) {
         console.log('click modifier');
         let id = document.querySelector("[name='id']");
-        console.log(id.value);
+//        console.log(id.value);
         var param = {
           id: id.value,
           date_achat: bouteille.date_achat.value,
@@ -201,11 +201,11 @@ window.addEventListener("load", function () {
           BaseURL + "index.php?requete=modifierBouteilleCellier",
           { method: "POST", body: JSON.stringify(param) }
         );
-        console.log(requete);
+//        console.log(requete);
         if (validation(bouteille)) {
           fetch(requete)
             .then((response) => {
-              console.log(response);
+  //            console.log(response);
               if (response.status === 200) {
                 return response.json();
               } else {
@@ -213,9 +213,8 @@ window.addEventListener("load", function () {
               }
             })
             .then((response) => {
-              console.log(response);
+        //      console.log(response);
               window.location.href = BaseURL;
-              console.log('bouteille ajouter');
             })
             .catch((error) => {
               console.error(error);
@@ -237,13 +236,6 @@ function validation(bouteille) {
   } else {
     elNom.classList.remove('error')
   }
-
-  // if (bouteille.millesime.value === "" || isNaN(bouteille.millesime.value)) {
-  //   isValid = false;
-  //   bouteille.millesime.classList.add('error')
-  // } else {
-  //   bouteille.millesime.classList.remove('error')
-  // }
 
   const millesimeRegex = /^\d{4}$/;
   const date_achat_annee = parseInt(bouteille.date_achat.value.split('-')[0]);
