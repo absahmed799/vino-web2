@@ -42,5 +42,5 @@ btnBoireList.forEach(function (btnBoire) {
 });
 
 
-//////validation front 
+
 
