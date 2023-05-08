@@ -19,7 +19,7 @@
             <p>Notes <input name="notes" value="<?php echo  $bouteilleInfo[0]['notes']  ?>"></p>
             <input type="hidden" name="id" value="<?php echo  $bouteilleInfo[0]['id']  ?>">
         </div>
-        <button class="btn btnCustom" name="modifierBouteilleCellier">Ajouter la bouteille (champs obligatoires)</button>
+        <button class="btn btnCustom" name="modifierBouteilleCellier">Modifier la bouteille (champs obligatoires)</button>
         </div>
     </div>
 </div>

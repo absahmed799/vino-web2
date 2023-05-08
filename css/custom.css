@@ -1,5 +1,5 @@
 /*
-Paremetres de CSS personalisées ici Demo Base FC. 
+Parametres de CSS personalisées ici Demo Base FC. 
 */
 
 * {
@@ -106,6 +106,13 @@ section, .section {
 	color: white;
 }
 
+.btnCustomBoire {
+	margin-right: 1.2rem;
+	margin-left: 1.2rem;
+	background-color: green;
+	color: white;
+}
+
 .btn {
 	display: inline-block;
 	padding: 1rem 1rem;
@@ -172,6 +179,7 @@ form .input-box input, .input-box input, input {
 	color: white;
 	background-color: green;
 }
+
 
 .listeAutoComplete {
 	text-align: left;
