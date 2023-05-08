@@ -27,6 +27,7 @@ function ajouterBouteilleQt(btn) {
   quantiteElem.innerHTML = quantite;
 }
 
+
 function boireBouteilleQt(btn) {
   let bouteille = btn.closest(".bouteille");
   let quantiteElem = bouteille.querySelector(".quantite-valeur");

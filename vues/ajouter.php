@@ -1,11 +1,11 @@
-<div class="ajouter section">
+<div class="ajouter section" id="valideAjout">
 
     <div class="nouvelleBouteille" vertical layout>
-        <strong>Recherche : </strong><input type="text" name="nom_bouteille">
+        <strong>Recherche : </strong><input type="text" name="nom_bouteille" value="">
         <ul class="listeAutoComplete">
 
         </ul>
-        <p>Nom : <!-- <input data-id="" class="nom_bouteille" type="text" name="nom_bouteille" placeholder="Nom de la bouteille" disabled> -->
+        <p data-js-nom>Nom : <!-- <input data-id="" class="nom_bouteille" type="text" name="nom_bouteille" placeholder="Nom de la bouteille" disabled> -->
                  <strong><span data-id="" class="nom_bouteille"></span></strong>
             </p>
         <div class="input-box">

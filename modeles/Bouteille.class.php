@@ -67,8 +67,6 @@ class Bouteille extends Modele
 			//$this->_db->error;
 		}
 
-
-
 		return $rows;
 	}
 
@@ -87,6 +85,7 @@ class Bouteille extends Modele
 	{
 
 		$rows = array();
+		//var_dump($rows);
 		$nom = $this->_db->real_escape_string($nom);
 		$nom = preg_replace("/\*/", "%", $nom);
 
@@ -103,7 +102,6 @@ class Bouteille extends Modele
 		} else {
 			throw new Exception("Erreur de requête sur la base de données", 1);
 		}
-
 
 		//var_dump($rows);
 		return $rows;

@@ -9,7 +9,7 @@
         </div>
 
 
-        <p>Nom : <span data-id="" class="nom_bouteille"><?php echo $nom_bouteille ?></span></p>
+        <p data-js-nom>Nom : <span data-id="" class="nom_bouteille"><?php echo $nom_bouteille ?></span></p>
         <div class="input-box">
             <p>Millesime : <input name="millesime" value="<?php echo  $bouteilleInfo[0]['millesime']  ?>"></p>
             <p>Quantite : <input name="quantite" value="<?php  echo $bouteilleInfo[0]['quantite']  ?>"></p>
