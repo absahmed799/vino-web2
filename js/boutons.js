@@ -1,5 +1,5 @@
 // window.addEventListener("load", function () {
-    
+
 // })
 
 /**
@@ -14,12 +14,13 @@ function ajouterBouteilleQt(btn) {
   quantiteElem.innerHTML = quantite;
 }
 
+
 function boireBouteilleQt(btn) {
   let bouteille = btn.closest('.bouteille');
   let quantiteElem = bouteille.querySelector('.quantite-valeur');
   let quantite = parseInt(quantiteElem.innerHTML);
   if (quantite > 0) {
-      quantite--;
+    quantite--;
   }
   quantiteElem.innerHTML = quantite;
 }
@@ -27,14 +28,19 @@ function boireBouteilleQt(btn) {
 let btnAjouterList = document.querySelectorAll('.btnAjouter');
 let btnBoireList = document.querySelectorAll('.btnBoire');
 
-btnAjouterList.forEach(function(btnAjouter) {
-  btnAjouter.addEventListener('click', function() {
-      ajouterBouteilleQt(btnAjouter);
+btnAjouterList.forEach(function (btnAjouter) {
+  btnAjouter.addEventListener('click', function () {
+    ajouterBouteilleQt(btnAjouter);
   });
 });
 
-btnBoireList.forEach(function(btnBoire) {
-  btnBoire.addEventListener('click', function() {
-      boireBouteilleQt(btnBoire);
+
+btnBoireList.forEach(function (btnBoire) {
+  btnBoire.addEventListener('click', function () {
+    boireBouteilleQt(btnBoire);
   });
 });
+
+
+//////validation front 
+
