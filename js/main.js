@@ -246,14 +246,16 @@ function validation(bouteille) {
   // }
 
   const millesimeRegex = /^\d{4}$/;
-  if (bouteille.millesime.value === "" || !millesimeRegex.test(bouteille.millesime.value)) {
+  const date_achat_annee = parseInt(bouteille.date_achat.value.split('-')[0]);
+
+  if (bouteille.millesime.value === "" || !millesimeRegex.test(bouteille.millesime.value) || parseInt(bouteille.millesime.value) > date_achat_annee) {
     isValid = false;
     bouteille.millesime.classList.add('error');
   } else {
     bouteille.millesime.classList.remove('error');
   }
 
-  const quantiteRegex = /^\d{6}$/;
+  const quantiteRegex = /^[1-9]\d{0,5}$/;
   if (bouteille.quantite.value === "" || !quantiteRegex.test(bouteille.quantite.value)) {
     isValid = false;
     bouteille.quantite.classList.add('error')
@@ -277,12 +279,19 @@ function validation(bouteille) {
   }
 
   const gardeRegex = /^\d{4}$/;
-  const date_achat_annee = parseInt(bouteille.date_achat.value.split('-')[0]);
   if (bouteille.garde_jusqua.value === "" || !gardeRegex.test(bouteille.garde_jusqua.value) || parseInt(bouteille.garde_jusqua.value) < date_achat_annee) {
     isValid = false;
     bouteille.garde_jusqua.classList.add('error')
   } else {
     bouteille.garde_jusqua.classList.remove('error')
+  }
+
+  const noteRegex = /^[a-zA-Z]{3,}$/;
+  if (bouteille.notes.value.value === "" || !noteRegex.test(bouteille.notes.value)) {
+    isValid = false;
+    bouteille.notes.classList.add('error')
+  } else {
+    bouteille.notes.classList.remove('error')
   }
 
 
