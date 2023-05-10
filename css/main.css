@@ -1,5 +1,5 @@
 /********
- * Votre CSS
+ * main CSS
  ********/
 
 html, body {
@@ -63,4 +63,8 @@ footer p
 	display:inline;
 	padding-right:50px;
 	font-size : 10px;
+}
+.error{
+	color: red;
+	border: 1px solid red;
 }

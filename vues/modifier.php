@@ -9,7 +9,7 @@
         </div>
 
 
-        <p>Nom : <span data-id="" class="nom_bouteille"><?php echo $nom_bouteille ?></span></p>
+        <p data-js-nom>Nom : <span data-id="" class="nom_bouteille"><?php echo $nom_bouteille ?></span></p>
         <div class="input-box">
             <p>Millesime : <input name="millesime" value="<?php echo  $bouteilleInfo[0]['millesime']  ?>"></p>
             <p>Quantite : <input name="quantite" value="<?php  echo $bouteilleInfo[0]['quantite']  ?>"></p>
@@ -19,7 +19,7 @@
             <p>Notes <input name="notes" value="<?php echo  $bouteilleInfo[0]['notes']  ?>"></p>
             <input type="hidden" name="id" value="<?php echo  $bouteilleInfo[0]['id']  ?>">
         </div>
-        <button class="btn btnCustom" name="modifierBouteilleCellier">Ajouter la bouteille (champs obligatoires)</button>
+        <button class="btn btnCustom" name="modifierBouteilleCellier">Modifier la bouteille (champs obligatoires)</button>
         </div>
     </div>
 </div>

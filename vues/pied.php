@@ -5,7 +5,7 @@
 				Copyright 2023
 			</p>
 			<p>
-				Teams A-P-A-C-T Vinos Demos
+				Teams APA-C-W
 			</p>
 		</footer>
 	</body>

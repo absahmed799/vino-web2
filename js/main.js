@@ -95,27 +95,27 @@ window.addEventListener("load", function () {
         );
         //console.log(requete); // debug
         fetch(requete)
-        .then((response) => {
-          console.log(response);
-      
-          if (response.status === 200) {
-            return response.json();
-          } else {
-            throw new Error("Erreur");
-          }
-        })
-        .then((data) => { // <-- change le nom du parametre
-          console.log(data.data);
-      
-          data.forEach(function (element) { // <-- use lethe stored data
-            liste.innerHTML +=
-              "<li data-id='" + element.id + "'>" + element.nom + "</li>";
+          .then((response) => {
+            console.log(response);
+
+            if (response.status === 200) {
+              return response.json();
+            } else {
+              throw new Error("Erreur");
+            }
+          })
+          .then((data) => { // <-- change le nom du parametre
+            console.log(data.data);
+
+            data.forEach(function (element) { // <-- use lethe stored data
+              liste.innerHTML +=
+                "<li data-id='" + element.id + "'>" + element.nom + "</li>";
+            });
+          })
+          .catch((error) => {
+            console.error(error);
           });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-      
+
       }
     });
 
@@ -143,7 +143,7 @@ window.addEventListener("load", function () {
     let btnAjouter = document.querySelector("[name='ajouterBouteilleCellier']");
     if (btnAjouter) {
       btnAjouter.addEventListener("click", function (evt) {
-       
+
         var param = {
           id_bouteille: bouteille.nom.dataset.id,
           date_achat: bouteille.date_achat.value,
@@ -157,21 +157,26 @@ window.addEventListener("load", function () {
           BaseURL + "index.php?requete=ajouterNouvelleBouteilleCellier",
           { method: "POST", body: JSON.stringify(param) }
         );
-        fetch(requete)
-          .then((response) => {
-            if (response.status === 200) {
-              return response.json();
-            } else {
-              throw new Error("Erreur");
-            }
-          })
-          .then((response) => {
-            console.log(response);
-            window.location.href = BaseURL;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+        if (validation(bouteille)) {
+          fetch(requete)
+            .then((response) => {
+              if (response.status === 200) {
+                return response.json();
+              } else {
+                throw new Error("Erreur");
+              }
+            })
+            .then((response) => {
+              console.log(response);
+              console.log('bouteille ajouter');
+              window.location.href = BaseURL;
+
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
+
       });
     }
 
@@ -181,10 +186,10 @@ window.addEventListener("load", function () {
     if (btnModifer) {
       btnModifer.addEventListener("click", function (evt) {
         console.log('click modifier');
-         let id= document.querySelector("[name='id']");
-         console.log(id.value);
+        let id = document.querySelector("[name='id']");
+//        console.log(id.value);
         var param = {
-         id:id.value,
+          id: id.value,
           date_achat: bouteille.date_achat.value,
           garde_jusqua: bouteille.garde_jusqua.value,
           notes: bouteille.notes.value,
@@ -196,24 +201,93 @@ window.addEventListener("load", function () {
           BaseURL + "index.php?requete=modifierBouteilleCellier",
           { method: "POST", body: JSON.stringify(param) }
         );
-        console.log(requete);
-        fetch(requete)
-          .then((response) => {
-            console.log(response);
-            if (response.status === 200) {
-              return response.json();
-            } else {
-              throw new Error("Erreur");
-            }
-          })
-          .then((response) => {
-            console.log(response);
-            window.location.href = BaseURL;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+//        console.log(requete);
+        if (validation(bouteille)) {
+          fetch(requete)
+            .then((response) => {
+  //            console.log(response);
+              if (response.status === 200) {
+                return response.json();
+              } else {
+                throw new Error("Erreur");
+              }
+            })
+            .then((response) => {
+        //      console.log(response);
+              window.location.href = BaseURL;
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
+
       });
     }
   }
 });
+
+
+function validation(bouteille) {
+  let elNom = document.querySelector('[data-js-nom]')
+  let isValid = true;
+  if (bouteille.nom.textContent === "") {
+    isValid = false;
+    elNom.classList.add('error')
+  } else {
+    elNom.classList.remove('error')
+  }
+
+  const millesimeRegex = /^\d{4}$/;
+  const date_achat_annee = parseInt(bouteille.date_achat.value.split('-')[0]);
+
+  if (bouteille.millesime.value === "" || !millesimeRegex.test(bouteille.millesime.value) || parseInt(bouteille.millesime.value) > date_achat_annee) {
+    isValid = false;
+    bouteille.millesime.classList.add('error');
+  } else {
+    bouteille.millesime.classList.remove('error');
+  }
+
+  const quantiteRegex = /^[1-9]\d{0,5}$/;
+  if (bouteille.quantite.value === "" || !quantiteRegex.test(bouteille.quantite.value)) {
+    isValid = false;
+    bouteille.quantite.classList.add('error')
+  } else {
+    bouteille.quantite.classList.remove('error')
+  }
+
+  if (bouteille.date_achat.value === "") {
+    isValid = false;
+    bouteille.date_achat.classList.add('error')
+  } else {
+    bouteille.date_achat.classList.remove('error')
+  }
+
+  const prixRegex = /^\d+(\.\d{1,2})?$/;
+  if (bouteille.prix.value === "" || !prixRegex.test(bouteille.prix.value)) {
+    isValid = false;
+    bouteille.prix.classList.add('error')
+  } else {
+    bouteille.prix.classList.remove('error')
+  }
+
+  const gardeRegex = /^\d{4}$/;
+  if (bouteille.garde_jusqua.value === "" || !gardeRegex.test(bouteille.garde_jusqua.value) || parseInt(bouteille.garde_jusqua.value) < date_achat_annee) {
+    isValid = false;
+    bouteille.garde_jusqua.classList.add('error')
+  } else {
+    bouteille.garde_jusqua.classList.remove('error')
+  }
+
+  const noteRegex = /^[a-zA-Z]{3,}$/;
+  if (bouteille.notes.value.value === "" || !noteRegex.test(bouteille.notes.value)) {
+    isValid = false;
+    bouteille.notes.classList.add('error')
+  } else {
+    bouteille.notes.classList.remove('error')
+  }
+
+
+  return isValid
+}
+
+
