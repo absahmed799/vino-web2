@@ -14,7 +14,7 @@
 //const BaseURL = "http://localhost/vino-git/";
 //const BaseURL = "http://127.0.0.1:8888/vino_etu/";
 //const BaseURL = document.baseURI;
-const BaseURL = "http://localhost/vino-git/";
+const BaseURL = "http://localhost/vino_web2/";
 
 // **********************************************************
 
@@ -278,8 +278,8 @@ function validation(bouteille) {
     bouteille.garde_jusqua.classList.remove('error')
   }
 
-  const noteRegex = /^[a-zA-Z]{3,}$/;
-  if (bouteille.notes.value.value === "" || !noteRegex.test(bouteille.notes.value)) {
+  
+  if (bouteille.notes.value.value === "") {
     isValid = false;
     bouteille.notes.classList.add('error')
   } else {
