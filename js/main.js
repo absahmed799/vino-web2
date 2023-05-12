@@ -12,9 +12,9 @@
 // NE EFFACER PAS BaseURL, UTILISE COMMENT OU UNCOMMENT !!!
 
 //const BaseURL = "http://localhost/vino-git/";
-//const BaseURL = "http://127.0.0.1:8888/vino_etu/";
+const BaseURL = "http://127.0.0.1:8888/vino_etu/";
 //const BaseURL = document.baseURI;
-const BaseURL = "http://localhost/vino_web2/";
+//const BaseURL = "http://localhost/vino_web2/";
 
 // **********************************************************
 
