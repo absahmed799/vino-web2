@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class MonSQL
  * Classe qui génère ma connection à MySQL à travers un singleton
@@ -11,6 +12,7 @@
  *
  */
 class MonSQL {
+	
 	/**
 	 * @var $_instance
 	 * @access private
@@ -24,9 +26,20 @@ class MonSQL {
 	 * @param void
 	 * @return void
 	 */
+	// Définir la valeur de la constante "HOST"
+
 	private function __construct($host, $user, $password, $database) 
 	{
-		
+		// Initialisation de la connexion à la base de données
+		self::$_instance = new mysqli($host, $user, $password, $database);
+
+		// Vérification des erreurs de connexion
+		if (self::$_instance->connect_errno) {
+			echo "Echec lors de la connexion à MySQL : (" . self::$_instance->connect_errno . ") " . self::$_instance->connect_error;
+		} else {
+			// Définition du jeu de caractères pour la connexion
+			self::$_instance->set_charset("UTF-8");    
+		}
 	}
 
 	/**
