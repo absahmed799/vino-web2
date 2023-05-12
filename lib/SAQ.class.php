@@ -97,7 +97,7 @@ class SAQ extends Modele {
 			//var_dump($noeud -> getAttribute('class')) ;
 			//if ("resultats_product" == str$noeud -> getAttribute('class')) {
 			if (strpos($noeud -> getAttribute('class'), "product-item") !== false) {
-
+				var_dump(strpos($noeud -> getAttribute('class'), "product-item"));
 				//echo $this->get_inner_html($noeud);
 				$info = self::recupereInfo($noeud);
 				echo "<p>".$info->nom;
@@ -131,10 +131,26 @@ class SAQ extends Modele {
 	{
 		return preg_replace('/\s+/', ' ',$chaine);
 	}
+	//product-image-photo
 	private function recupereInfo($noeud) {
 		
 		$info = new stdClass();
-		$info -> img = $noeud -> getElementsByTagName("img") -> item(0) -> getAttribute('src'); //TODO : Nettoyer le lien
+		//if (strpos($noeud -> getAttribute('class'), "product-image-photo") !== false) {
+			
+			var_dump($noeud-> getElementsByTagName("img"));
+			$images= $noeud ;
+
+			foreach ($noeud-> getElementsByTagName("img") as $key => $image) {
+				var_dump($image);
+				if (strpos($image -> getAttribute('class'), "product-image-photo") !== false) {
+					var_dump(strpos($image -> getAttribute('class'), "product-image-photo") !== false);
+					$info -> img = $image-> getAttribute('src');
+				}
+			
+			
+			}
+		//$info -> img = $noeud -> getElementsByTagName("img")  -> getAttribute('src'); //TODO : Nettoyer le lien
+		//}
 		;
 		$a_titre = $noeud -> getElementsByTagName("a") -> item(0);
 		$info -> url = $a_titre->getAttribute('href');
